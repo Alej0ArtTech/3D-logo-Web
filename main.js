@@ -1,26 +1,41 @@
 import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+console.log(THREE)
 
 // Crear una escena
 const scene = new THREE.Scene();
 
+const geometry = new THREE.BoxGeometry(1, 1, 1)
+const material = new THREE.MeshBasicMaterial({ color: 0xff0000 })
+const mesh = new THREE.Mesh(geometry, material)
+scene.add(mesh)
+
+
 // Crear una cámara
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.z = 5;
+
+const sizes = {
+    width: 800,
+    height: 600
+}
+
+const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height)
+scene.add(camera)
+
 
 // Crear un renderizador
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
+const renderer = new THREE.WebGLRenderer({
+    canvas: canvas
+})
+renderer.setSize(sizes.width, sizes.height)
+
 
 // Cargar el modelo 3D
-const loader = new GLTFLoader();
-const url = '\models\LOGOBLEN.glb'; // Reemplaza con la URL de tu archivo GLTF en Google Drive
-loader.load(url, function (gltf) {
-  scene.add(gltf.scene);
-}, undefined, function (error) {
-  console.error(error);
-});
+const canvas = document.querySelector('canvas.webgl')
+
+
+//renderizacion
+renderer.render(scene, camera)
+
+
 
 // Animación y renderizado
 function animate() {

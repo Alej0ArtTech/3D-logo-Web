@@ -1,0 +1,16 @@
+{
+  "name": "3d-logo-web",
+  "version": "1.0.0",
+  "description": "Pagina dedicada a usar librerias de javascrip para alojar visualizador de modelos 3D",
+  "main": "main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vite": "^5.0.10"
+  }
+}
