@@ -38,11 +38,11 @@ renderer.setSize(sizes.width, sizes.height)
 // nuevo cordigo, sive para cargar el modelo 3d
 // Cargar el modelo glTF
 const loader = new GLTFLoader();
-const url = 'https://drive.google.com/uc?export=download&id=1ZF7GIu-IvqbJq3GtJtThqqxALDZO3oJr'; // Reemplaza 'your-model-url' con la URL de tu modelo glTF en Google Drive
+const url = 'models/LOGOBLEN.glb'; // Reemplaza 'your-model-url' con la URL de tu modelo glTF en Google Drive
 
 loader.load(url, (gltf) => {
-    const model = gltf.scene;
-    scene.add(model);
+    
+    scene.add(gltf.scene);
 
 //renderizacion
 renderer.render(scene, camera)
