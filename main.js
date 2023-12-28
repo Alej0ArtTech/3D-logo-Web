@@ -15,7 +15,7 @@ document.body.appendChild(renderer.domElement);
 
 // Cargar el modelo 3D
 const loader = new GLTFLoader();
-const url = 'https://drive.google.com/uc?export=download&id=1ZF7GIu-IvqbJq3GtJtThqqxALDZO3oJr'; // Reemplaza con la URL de tu archivo GLTF en Google Drive
+const url = '\models\LOGOBLEN.glb'; // Reemplaza con la URL de tu archivo GLTF en Google Drive
 loader.load(url, function (gltf) {
   scene.add(gltf.scene);
 }, undefined, function (error) {
