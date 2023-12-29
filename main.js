@@ -1,50 +1,82 @@
 import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+// import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+
+	
 
 
-console.log(THREE)
+        //crear una scena y una camera	
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerHeight / window.innerWidth)
+        camera.position.z = 3
+        scene.add(camera) 
 
-// Crear una escena
-const scene = new THREE.Scene();
-const geometry = new THREE.BoxGeometry(1, 1, 1)
-const material = new THREE.MeshBasicMaterial({ color: 0xff0000 })
-const mesh = new THREE.Mesh(geometry, material)
-scene.add(mesh)
-
-
+        const renderer =new THREE.WebGLRenderer();
+        document.body.appendChild(renderer.domElement);
 
 
-//ratio + camaron
-const sizes = {
-    width: 800,
-    height: 600
-}
+        // Crear una forma
 
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height)
-camera.position.z = 3
-scene.add(camera)
+        const geometry = new THREE.BoxGeometry(1, 1, 1)
+        const material = new THREE.MeshBasicMaterial({ color: 0xff0000 })
+        const mesh = new THREE.Mesh(geometry, material)
+        scene.add(mesh)
+
+        camera.position.z = 5;
+
+        function animate(){
+            requestAnimationFrame(animate);
+            mesh.rotation.x += 0.01;
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+
+
+
+
+
+
+//console.log(THREE)
+
+
+
+
+
+
+
+
+
+
 
 
 // Crear un renderizador
 
-const canvas = document.querySelector('canvas.webgl')
-
+/*const canvas = document.querySelector('canvas.webgl')
 const renderer = new THREE.WebGLRenderer({
     canvas: canvas
 })
 renderer.setSize(sizes.width, sizes.height)
 
+*/
+
+
+
+
+
 
 // nuevo cordigo, sive para cargar el modelo 3d
 // Cargar el modelo glTF
-const loader = new GLTFLoader();
-const url = 'models/LOGOBLEN.glb'; // Reemplaza 'your-model-url' con la URL de tu modelo glTF en Google Drive
+//const loader = new GLTFLoader();
 
-loader.load(url, (gltf) => {
-    
-    scene.add(gltf.scene);
+//loader.load( 'models/LOGOBLEN2.gltf', function (gltf) {
+ //   scene.add( gltf.scene );
+//}, undefined, function ( error ) {
+
+//	console.error( error );
+//} )
+
+
+
 
 //renderizacion
-renderer.render(scene, camera)
-
-})
